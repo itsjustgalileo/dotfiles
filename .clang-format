@@ -1,0 +1,99 @@
+# .clang-format
+
+# Base style to use. Setting this to LLVM will apply LLVM's default formatting style.
+BasedOnStyle: LLVM
+
+# Number of spaces to use for indentation.
+IndentWidth: 4
+
+# Number of spaces per tab.
+TabWidth: 4
+
+# How to handle tabs.
+# Options:
+# - Never: Use spaces for indentation.
+# - Always: Use tabs for indentation.
+# - ForIndentation: Use tabs for indentation, spaces for alignment.
+UseTab: Never
+
+# Controls brace placement.
+# Options:
+# - Attach: Braces are attached to the statement.
+# - Linux: Braces are placed on a new line, following Linux style.
+# - Stroustrup: Braces follow Stroustrup's style.
+# - Allman: Braces are placed on a new line, following Allman's style.
+# - Custom: User-defined custom settings for brace wrapping.
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterEnum: false # If true, puts braces on the next line after enum.
+  AfterFunction: false # If true, puts braces on the next line after function definitions.
+  AfterNamespace: false # If true, puts braces on the next line after namespaces.
+  AfterStruct: false # If true, puts braces on the next line after structs.
+  AfterUnion: false # If true, puts braces on the next line after unions.
+  BeforeCatch: false # If true, puts braces on the next line before catch blocks.
+  BeforeElse: false # If true, puts braces on the next line before else blocks.
+  BeforeWhile: false # If true, puts braces on the next line after while blocks.
+
+# Determines whether to break lines after the return type.
+# Options:
+# - None: Do not force line breaks.
+# - AllDefinitions: Break lines after all function definitions.
+AlwaysBreakAfterDefinitionReturnType: None
+
+# Allows short functions to be on a single line.
+# Options:
+# - Empty: Allows single-line functions if the function body is empty.
+# - All: Allows all short functions to be on a single line.
+# - None: Disallows single-line functions.
+AllowShortFunctionsOnASingleLine: Empty
+
+# Allows short blocks (like if statements) to be on a single line.
+# Options:
+# - Empty: Allows single-line blocks if the block is empty.
+# - All: Allows all short blocks to be on a single line.
+# - None: Disallows single-line blocks.
+AllowShortBlocksOnASingleLine: Empty
+
+# Limits the number of characters per line. 0 disables this limit.
+ColumnLimit: 0
+
+# Style for braced initializers.
+# Options:
+# - false: Uses the default style.
+# - true: Applies C++11 braced list style.
+Cpp11BracedListStyle: false
+
+# Determines where to place pointers.
+# Options:
+# - Left: Place the pointer on the left of the type (e.g., `int* ptr`).
+# - Right: Place the pointer on the right of the type (e.g., `int *ptr`).
+PointerAlignment: Right
+
+# Controls spacing before parentheses.
+# Options:
+# - ControlStatements: Space before parentheses in control statements (e.g., if, while).
+# - Always: Space before all parentheses.
+# - Never: No space before parentheses.
+SpaceBeforeParens: ControlStatements
+
+# Number of spaces to use for indentation of continued lines.
+ContinuationIndentWidth: 4
+
+# Controls breaking lines before binary operators.
+# Options:
+# - NonAssignment: Break before non-assignment operators.
+# - All: Break before all binary operators.
+# - None: Do not break before binary operators.
+BreakBeforeBinaryOperators: NonAssignment
+
+# Adds a final newline at the end of the file.
+InsertNewlineAtEOF: true
+
+# Determines if includes should be sorted.
+# Options:
+# - false: Do not sort includes.
+# - true: Sort includes.
+SortIncludes: false
+
+# Number of spaces before trailing comments.
+SpacesBeforeTrailingComments: 1

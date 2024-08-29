@@ -24,6 +24,7 @@
 ;;    3.6 Moving Text
 ;;    3.7 Additional Modes and Packages
 ;;    3.8 Compilation Command Settings
+;;    3.9 Snippets
 ;; 4. Emacs Setup and Customization
 ;;    4.1 Ido Mode and Smex Integration
 ;;    4.2 Dired Configuration
@@ -187,6 +188,20 @@ compilation-error-regexp-alist-alist
 (add-to-list 'compilation-error-regexp-alist
              '("\\([a-zA-Z0-9\\.]+\\)(\\([0-9]+\\)\\(,\\([0-9]+\\)\\)?) \\(Warning:\\)?"
                1 2 (4) (5)))
+
+;;; 3.9 Snippets
+(rc/require 'yasnippet)
+
+(require 'yasnippet)
+
+(setq yas/triggers-in-field nil)
+(setq yas-snippet-dirs '("~/.emacs.snippets/"))
+
+(yas-global-mode 1)
+
+(defun my-working-dir-name ()
+  "Return the name of the current working directory."
+  (file-name-nondirectory (directory-file-name (file-name-directory (buffer-file-name)))))
 
 ;; ========================================
 ;; 4. Emacs Setup and Customization

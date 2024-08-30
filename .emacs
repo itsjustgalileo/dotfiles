@@ -107,16 +107,23 @@
     (revert-buffer)))
 
 (add-hook 'dired-mode-hook 'auto-revert-mode)
-(setq auto-revert-interval 5)  ;; Set auto-revert interval to 5 seconds
+(setq auto-revert-interval 1)  ;; Set auto-revert interval to 5 seconds
 
 ;; 3.3 Magit Integration
 (rc/require 'cl-lib)            ;; Require cl-lib for Magit
 (rc/require 'magit)             ;; Require Magit
+(rc/require 'git-gutter)   ;; Require Git Gutter Plus
+
+(global-git-gutter-mode)  ;; global git gutter mode
 
 (setq magit-auto-revert-mode nil) ;; Disable auto-revert mode in Magit
 
+(global-set-key (kbd "C-x g") 'git-gutter-mode) ;; Turn on/off in the current buffer
+(global-set-key (kbd "C-x G") 'global-git-gutter-mode) ;; Turn on/off globally
 (global-set-key (kbd "C-c m s") 'magit-status) ;; Keybinding for Magit status
 (global-set-key (kbd "C-c m l") 'magit-log)    ;; Keybinding for Magit log
+
+
 
 ;; 3.4 Multiple Cursors
 (rc/require 'multiple-cursors)
@@ -189,7 +196,7 @@ compilation-error-regexp-alist-alist
              '("\\([a-zA-Z0-9\\.]+\\)(\\([0-9]+\\)\\(,\\([0-9]+\\)\\)?) \\(Warning:\\)?"
                1 2 (4) (5)))
 
-;;; 3.9 Snippets
+;; 3.9 Snippets
 (rc/require 'yasnippet)
 
 (require 'yasnippet)
@@ -199,9 +206,25 @@ compilation-error-regexp-alist-alist
 
 (yas-global-mode 1)
 
-(defun my-working-dir-name ()
-  "Return the name of the current working directory."
-  (file-name-nondirectory (directory-file-name (file-name-directory (buffer-file-name)))))
+;; autoformatting with clang format
+(rc/require 'clang-format)
+
+(defun clang-format-save-hook-for-this-buffer ()
+  "Create a buffer local save hook."
+  (add-hook 'before-save-hook
+            (lambda ()
+              (when (locate-dominating-file "." ".clang-format")
+                (clang-format-buffer))
+              ;; Continue to save.
+              nil)
+            nil
+            ;; Buffer local hook.
+            t))
+
+;; Run this for each mode you want to use the hook.
+(add-hook 'c-mode-hook (lambda () (clang-format-save-hook-for-this-buffer)))
+(add-hook 'c++-mode-hook (lambda () (clang-format-save-hook-for-this-buffer)))
+(add-hook 'glsl-mode-hook (lambda () (clang-format-save-hook-for-this-buffer)))
 
 ;; ========================================
 ;; 4. Emacs Setup and Customization
@@ -255,7 +278,7 @@ compilation-error-regexp-alist-alist
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(org-cliplink c++-mode c-mode sml-mode rfc-mode typescript-mode elpy hindent ag qml-mode racket-mode php-mode go-mode kotlin-mode nginx-mode toml-mode dockerfile-mode nix-mode purescript-mode markdown-mode jinja2-mode nim-mode rust-mode cmake-mode clojure-mode graphviz-dot-mode lua-mode tuareg glsl-mode yaml-mode d-mode scala-mode move-text company multiple-cursors magit gruber-darker-theme smex ido-completing-read+ dash-functional)))
+   '(git-gutter-plus clang-format ido-completing-read+ smex sml-mode rfc-mode typescript-mode elpy hindent ag qml-mode racket-mode php-mode go-mode kotlin-mode nginx-mode toml-mode dockerfile-mode nix-mode purescript-mode markdown-mode jinja2-mode nim-mode rust-mode cmake-mode clojure-mode graphviz-dot-mode lua-mode tuareg glsl-mode yaml-mode d-mode scala-mode move-text company multiple-cursors magit gruber-darker-theme org-cliplink dash-functional dash)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

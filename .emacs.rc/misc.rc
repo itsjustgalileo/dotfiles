@@ -11,6 +11,8 @@
               default-input-method "programmer-dvorak"
               visible-bell (equal system-type 'windows-nt))
 
+(setq ring-bell-function 'ignore)
+
 (defun rc/colorize-compilation-buffer ()
   (toggle-read-only)
   (ansi-color-apply-on-region compilation-filter-start (point))

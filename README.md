@@ -2,6 +2,10 @@
 
 ---
 
+![dotfiles logo](./dotfiles.jpeg)
+
+---
+
 ## 🗨️ PRESENTATION
 
 This sets up my dev environment easily on any machine.

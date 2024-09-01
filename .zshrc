@@ -23,6 +23,7 @@ alias ls='ls --color=always'
 alias ll='ls -la'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
+alias vi='vim'
 
 # Configure git for colorized output
 git config --global color.ui auto

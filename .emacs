@@ -73,7 +73,7 @@
   (set-face-attribute 'line-number nil :inherit 'default))
 
 ;; 2.4 Font Size
-(set-face-attribute 'default nil :height 140) ;; Set default font size
+(set-frame-font "Comic Code 14" nil t)
 
 ;; 2.5 Word Wrap in Markdown
 (defun rc/enable-word-wrap ()

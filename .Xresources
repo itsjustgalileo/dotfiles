@@ -6,9 +6,12 @@ Xft.hintstyle:  hintmedium
 URxvt.termName: rxvt
 URxvt*depth: 32
 URxvt.transparent: false
-URxvt.font: xft:DejaVu Sans Mono:size=15
 URxvt.scrollBar: false
 URxvt.iconFile: ./icons/terminal-icon.png
+Xterm*font: xft:Comic Code:size=15
+URxvt.font: xft:Comic Code:size=15
+
+
 
 ! Gruber-Darker
 URxvt*foreground: #e4e4ef

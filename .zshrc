@@ -23,7 +23,6 @@ alias ls='ls --color=always'
 alias ll='ls -la'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
-alias vi='vim'
 
 # Configure git for colorized output
 git config --global color.ui auto
@@ -35,9 +34,8 @@ export LS_COLORS='di=34:fi=0:ln=36:pi=33:so=35:bd=44:cd=43:or=31:mi=05;37:ex=32:
 unsetopt beep
 
 # Manage nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
@@ -50,3 +48,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   exec startx 2>> "$HOME/.startx_errors.log"
 fi
+
+# bun completions
+[ -s "/home/galileo/.bun/_bun" ] && source "/home/galileo/.bun/_bun"

@@ -1,19 +1,11 @@
 [user]
-	name = itsjustgalileo
-	email = labyadmanaf@icloud.com
+	name = ItsJustGalileo
+	email = itsjustgalileo@icloud.com
+[color]
+	ui = auto
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
-[color]
-	ui = auto
-[merge]
-	conflictStyle = diff3
-[magit]
-	hideCampaign = true
-[alias]
-    tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
-[init]
-	defaultBranch = main

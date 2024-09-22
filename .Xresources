@@ -8,8 +8,8 @@ URxvt*depth: 32
 URxvt.transparent: false
 URxvt.scrollBar: false
 URxvt.iconFile: ./icons/terminal-icon.png
-Xterm*font: xft:Comic Code:size=15
-URxvt.font: xft:Comic Code:size=15
+!Xterm*font: xft:Comic Code:size=15
+!URxvt.font: xft:Comic Code:size=15
 
 
 

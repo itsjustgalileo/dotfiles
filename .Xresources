@@ -8,8 +8,8 @@ URxvt*depth: 32
 URxvt.transparent: false
 URxvt.scrollBar: false
 URxvt.iconFile: ./icons/terminal-icon.png
-!Xterm*font: xft:Comic Code:size=15
 !URxvt.font: xft:Comic Code:size=15
+!URxvt.font: xft:IBM Plex Mono:size=12
 
 
 
@@ -32,38 +32,3 @@ URxvt*color12: #729FCF
 URxvt*color13: #AD7FA8
 URxvt*color14: #fcaf3e
 URxvt*color15: #EEEEEC
-
-! ! Zenburn
-! URxvt*background: #3f3f3f
-! URxvt*foreground: #dcdccc
-! URxvt*cursorColor: #aaaaaa
-! ! URxvt*colorUL: #366060
-! ! URxvt*underlineColor: #dfaf8f
-! URxvt*color0: #3f3f3f
-! URxvt*color1: #cc9393
-! URxvt*color2: #7f9f7f
-! URxvt*color3: #d0bf8f
-! URxvt*color4: #6ca0a3
-! URxvt*color5: #dc8cc3
-! URxvt*color6: #93e0e3
-! URxvt*color7: #dcdccc
-! URxvt*color8: #989890
-! URxvt*color9: #dca3a3
-! URxvt*color10: #bfebbf
-! URxvt*color11: #f0dfaf
-! URxvt*color12: #8cd0d3
-! URxvt*color13: #dc8cc3
-! URxvt*color14: #93e0e3
-! URxvt*color15: #ffffff
-
-! Adwaita
-! URxvt*background: #EDEDED
-! URxvt*foreground: #2E3436
-
-URxvt.perl-ext-common:  resize-font,matcher
-URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1
-
-URxvt.keysym.C-minus:  resize-font:smaller
-URxvt.keysym.C-equal:  resize-font:bigger
-URxvt.keysym.C-0:      resize-font:reset

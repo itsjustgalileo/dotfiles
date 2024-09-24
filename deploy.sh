@@ -3,6 +3,23 @@
 # Get the directory where the script is located
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Fonts directory path in the script's root
+FONTS_DIR="$SCRIPT_DIR/fonts"
+
+# Target directory for fonts
+TARGET_FONTS_DIR="$HOME/.local/share/fonts"
+
+# Ensure the target directory exists
+mkdir -p "$TARGET_FONTS_DIR"
+
+# Recursively copy all fonts from the fonts directory
+if [ -d "$FONTS_DIR" ]; then
+    cp -r "$FONTS_DIR"/* "$TARGET_FONTS_DIR"
+    echo "Fonts copied to $TARGET_FONTS_DIR."
+else
+    echo "No fonts directory found."
+fi
+
 # Iterate over all items in the script directory
 for item in "$SCRIPT_DIR"/.*; do
     # Skip if it's the current or parent directory entries
@@ -33,4 +50,4 @@ for item in "$SCRIPT_DIR"/.*; do
     fi
 done
 
-echo "Symlinking complete."
+echo "Symlinking and font copying complete."

@@ -10,6 +10,11 @@ for item in "$SCRIPT_DIR"/.*; do
         continue
     fi
 
+    # Skip the .git and .gitignore files
+    if [ "$(basename "$item")" = ".git" ] || [ "$(basename "$item")" = ".gitignore" ]; then
+        continue
+    fi
+
     # Extract the name and target path
     name=$(basename "$item")
     target="$HOME/$name"
@@ -29,4 +34,3 @@ for item in "$SCRIPT_DIR"/.*; do
 done
 
 echo "Symlinking complete."
-

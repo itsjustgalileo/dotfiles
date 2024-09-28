@@ -27,15 +27,5 @@ if command -v picom > /dev/null; then
     picom -b &
 fi
 
-# Start libvirtd
-if command -v libvirtd > /dev/null; then
-    sudo systemctl start libvirtd &
-fi
-
-# start nm
-if command -v nm-applet > /dev/null; then
-    nm-applet &
-fi
-
 # Start the i3 window manager
 exec i3

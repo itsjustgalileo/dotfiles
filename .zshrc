@@ -1,5 +1,5 @@
 # Set the default editor
-export EDITOR='vim'
+export EDITOR='vi'
 
 # Enable command auto-correction
 unsetopt correct
@@ -37,17 +37,8 @@ unsetopt beep
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# Bun completions
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-# Bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
 # Start X if no DISPLAY and at tty1
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   exec startx 2>> "$HOME/.startx_errors.log"
 fi
 
-# bun completions
-[ -s "/home/galileo/.bun/_bun" ] && source "/home/galileo/.bun/_bun"

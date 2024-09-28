@@ -50,4 +50,9 @@ for item in "$SCRIPT_DIR"/.*; do
     fi
 done
 
+fc-cache -fv
+A
+A
+B
+fc-cache -fv
 echo "Symlinking and font copying complete."

@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: ifdefined
+# key: ifdefined
+# --
+#if defined($1) 
+#define $1
+
+$0
+
+#endif /* $1 */

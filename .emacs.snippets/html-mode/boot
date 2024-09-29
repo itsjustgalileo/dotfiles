@@ -1,0 +1,35 @@
+# -*- mode: snippet -*-
+# name: boot
+# key: boot
+# --
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>$1</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <header class="bg-primary text-white text-center py-3">
+        <h1>Welcome to My Website</h1>
+    </header>
+
+    <div class="container mt-4">
+        <h2>Your Content Goes Here</h2>
+        <p>$0</p>
+        <button class="btn btn-success">Click Me!</button>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-4">
+        <p>&copy; 2024 ItsJustGalileo. All rights reserved.</p>
+    </footer>
+
+    <!-- jQuery and Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -12,24 +12,25 @@ This sets up my dev environment easily on any machine.
 This project was inspired by [Tsoding daily](https://www.youtube.com/@TsodingDaily). Especially his emacs setup. It looks like my old one on steroids.
 This setup might not work for everyone. This is very personal to me.
 
+**THIS PROJECT GETS AUTOMATICALLY INSTALLED WITH THE [Arch setup scripts](https://github.com/itsjustgalileo/Arch-setup)**
+
 ---
 
 ## 🖥️ SUPPORTED PLATFORMS
 
 - [ ] Windows
 - [X] Linux
-- [ ] macOS
+- [X] macOS
 
 ---
 
 ## ✅ PREREQUISITES
 
-- Linux (I uSe ArCh By ThE wAy)
+- Linux (I uSe ArCh By ThE wAy) / macOS
 - i3
 - zsh
-- rxvt-unicode-256color
 - git
-- Emacs
+- emacs
 
 ---
 
@@ -50,7 +51,7 @@ chmod +x ./deploy.sh
 
 - [ ] Port to windows
   - [ ] deploy script
-- [ ] Port to mac?
+- [X] Port to mac
 
 ---
 

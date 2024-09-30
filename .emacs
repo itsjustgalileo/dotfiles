@@ -46,6 +46,7 @@
 (package-initialize)
 
 (add-to-list 'load-path "~/.emacs.local/")
+(add-to-list 'custom-theme-load-path "~/.emacs.local/")
 
 (load "~/.emacs.rc/rc.el")
 (load "~/.emacs.rc/misc.rc")

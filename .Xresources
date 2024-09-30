@@ -11,7 +11,7 @@ Xft.hintstyle:  hintmedium
 URxvt.termName: rxvt
 URxvt*depth: 32
 URxvt.transparent: false
-URxvt.font: xft:IBM Plex Mono:size=20
+URxvt.font: xft:IBM Blex Mono:size=18
 URxvt.scrollBar: false
 URxvt.iconFile: .galileo/icons/terminal-icon.png
 

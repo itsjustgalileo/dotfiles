@@ -23,14 +23,16 @@
 ;;    3.5 Autocompletion with Company
 ;;    3.6 Moving Text
 ;;    3.7 Additional Modes and Packages
-;;    3.8 Compilation Command Settings
 ;;    3.9 Snippets
 ;; 4. Emacs Setup and Customization
 ;;    4.1 Ido Mode and Smex Integration
 ;;    4.2 Dired Configuration
 ;;    4.3 Custom Keybindings
-;; 5. C/C++ Configuration
-;;    5.1 C Mode Settings
+;;    4.4 Compilation Command Settings
+;; 5. Languages Configuration
+;;    5.1 C/C++ Mode Settings
+;;    5.2 Haskell Mode Settings
+;;    5.3 Additional Modes and Packages
 ;; 6. Auto-Generated Custom Settings
 ;; ========================================
 
@@ -123,8 +125,6 @@
 (global-set-key (kbd "C-c m s") 'magit-status) ;; Keybinding for Magit status
 (global-set-key (kbd "C-c m l") 'magit-log)    ;; Keybinding for Magit log
 
-
-
 ;; 3.4 Multiple Cursors
 (rc/require 'multiple-cursors)
 
@@ -152,60 +152,7 @@
 (global-set-key (kbd "M-p") 'move-text-up)
 (global-set-key (kbd "M-n") 'move-text-down)
 
-;;; Haskell mode
-(rc/require 'haskell-mode)
-
-(setq haskell-process-type 'cabal-new-repl)
-(setq haskell-process-log t)
-
-(add-hook 'haskell-mode-hook 'haskell-indent-mode)
-(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
-(add-hook 'haskell-mode-hook 'haskell-doc-mode)
-
-;; 3.7 Additional Modes and Packages
-(rc/require
- 'scala-mode
- 'd-mode
- 'yaml-mode
- 'glsl-mode
- 'tuareg
- 'lua-mode
- 'less-css-mode
- 'graphviz-dot-mode
- 'clojure-mode
- 'cmake-mode
- 'rust-mode
- 'csharp-mode
- 'nim-mode
- 'jinja2-mode
- 'markdown-mode
- 'purescript-mode
- 'nix-mode
- 'dockerfile-mode
- 'toml-mode
- 'nginx-mode
- 'kotlin-mode
- 'go-mode
- 'php-mode
- 'racket-mode
- 'qml-mode
- 'ag
- 'elpy
- 'typescript-mode
- 'rfc-mode
- 'sml-mode
- )
-
-;; 3.8 Compilation Command Settings
-(require 'compile)
-
-compilation-error-regexp-alist-alist
-
-(add-to-list 'compilation-error-regexp-alist
-             '("\\([a-zA-Z0-9\\.]+\\)(\\([0-9]+\\)\\(,\\([0-9]+\\)\\)?) \\(Warning:\\)?"
-               1 2 (4) (5)))
-
-;; 3.9 Snippets
+;; 3.8 Snippets
 (rc/require 'yasnippet)
 
 (require 'yasnippet)
@@ -215,7 +162,7 @@ compilation-error-regexp-alist-alist
 
 (yas-global-mode 1)
 
-;; autoformatting with clang format
+;; 3.9 autoformatting with clang format
 (rc/require 'clang-format)
 
 (defun clang-format-save-hook-for-this-buffer ()
@@ -263,6 +210,16 @@ compilation-error-regexp-alist-alist
 (global-set-key [f9] 'gdb)     ;; Debug with F9
 (global-set-key [f6] 'eshell)  ;; Open Eshell with F6
 
+;; 4.4 Compilation Command Settings
+(require 'compile)
+
+compilation-error-regexp-alist-alist
+
+(add-to-list 'compilation-error-regexp-alist
+             '("\\([a-zA-Z0-9\\.]+\\)(\\([0-9]+\\)\\(,\\([0-9]+\\)\\)?) \\(Warning:\\)?"
+               1 2 (4) (5)))
+
+
 ;; ========================================
 ;; 5. C/C++ Configuration
 ;; ========================================
@@ -276,6 +233,50 @@ compilation-error-regexp-alist-alist
 (add-hook 'c-mode-hook (lambda ()
                          (interactive)
                          (c-toggle-comment-style -1)))
+
+;;; 5.2 Haskell mode
+(rc/require 'haskell-mode)
+
+(setq haskell-process-type 'cabal-new-repl)
+(setq haskell-process-log t)
+
+(add-hook 'haskell-mode-hook 'haskell-indent-mode)
+(add-hook 'haskell-mode-hook 'interactive-haskell-mode)
+(add-hook 'haskell-mode-hook 'haskell-doc-mode)
+
+;; 5.3 Additional Modes and Packages
+(rc/require
+ 'scala-mode
+ 'd-mode
+ 'yaml-mode
+ 'glsl-mode
+ 'tuareg
+ 'lua-mode
+ 'less-css-mode
+ 'graphviz-dot-mode
+ 'clojure-mode
+ 'cmake-mode
+ 'rust-mode
+ 'csharp-mode
+ 'nim-mode
+ 'jinja2-mode
+ 'markdown-mode
+ 'purescript-mode
+ 'nix-mode
+ 'dockerfile-mode
+ 'toml-mode
+ 'nginx-mode
+ 'kotlin-mode
+ 'go-mode
+ 'php-mode
+ 'racket-mode
+ 'qml-mode
+ 'ag
+ 'elpy
+ 'typescript-mode
+ 'rfc-mode
+ 'sml-mode
+ )
 
 ;; ========================================
 ;; 6. Auto-Generated Custom Settings

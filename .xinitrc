@@ -11,9 +11,9 @@ if [ -f ~/.Xresources ]; then
 fi
 
 # Set wallpaper using xwallpaper (if the image exists)
-if command -v xwallpaper > /dev/null; then
+if command -v feh > /dev/null; then
     if [ -f ~/code/dotfiles/bg.png ]; then
-        xwallpaper --center ~/code/dotfiles/bg.png
+        feh --bg-scale ~/code/dotfiles/bg.webp
     fi
 fi
 

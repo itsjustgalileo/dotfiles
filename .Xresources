@@ -2,3 +2,63 @@ Xft.dpi:    96
 Xft.antialias:  1
 Xft.hinting:    1
 Xft.hintstyle:  hintmedium
+
+Xft.dpi:    96
+Xft.antialias:  1
+Xft.hinting:    1
+Xft.hintstyle:  hintmedium
+
+URxvt.termName: rxvt
+URxvt*depth: 32
+URxvt.transparent: false
+URxvt.font: xft:Iosevka:size=20
+URxvt.scrollBar: false
+URxvt.iconFile: .galileo/icons/terminal-icon.png
+
+! URxvt Protanopia Theme
+
+! Base Colors
+*.foreground:       #c9d1d9
+*.background:       #0d1117
+*.cursorColor:      #58a6ff
+*.borderColor:      #30363d
+
+! Black (backgrounds and gray tones)
+*.color0:           #010409   ! Black
+*.color8:           #8b949e   ! Bright Black (gray)
+
+! Red (used for errors or warnings)
+*.color1:           #c38000   ! Red
+*.color9:           #c38000   ! Bright Red
+
+! Green
+*.color2:           #42a0ff   ! Green
+*.color10:          #42a0ff   ! Bright Green
+
+! Yellow
+*.color3:           #d29922   ! Yellow
+*.color11:          #d29922   ! Bright Yellow
+
+! Blue
+*.color4:           #58a6ff   ! Blue
+*.color12:          #58a6ff   ! Bright Blue
+
+! Magenta (purple)
+*.color5:           #d2a8ff   ! Magenta
+*.color13:          #d2a8ff   ! Bright Magenta
+
+! Cyan
+*.color6:           #39c5cf   ! Cyan
+*.color14:          #39c5cf   ! Bright Cyan
+
+! White (light gray)
+*.color7:           #c9d1d9   ! White
+*.color15:          #f0f6fc   ! Bright White
+
+URxvt.perl-ext-common:  resize-font,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
+URxvt.keysym.C-minus:  resize-font:smaller
+URxvt.keysym.C-equal:  resize-font:bigger
+URxvt.keysym.C-0:      resize-font:reset

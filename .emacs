@@ -33,6 +33,7 @@
 ;;    5.1 C/C++ Mode Settings
 ;;    5.2 Haskell Mode Settings
 ;;    5.3 Additional Modes and Packages
+;;    5.4 LaTeX support
 ;; 6. Auto-Generated Custom Settings
 ;; ========================================
 
@@ -69,14 +70,10 @@
 ;; 2.3 Theme Configuration
 (load-theme 'protanopia t)        ;; Main protanopia theme
 ;; (rc/require-theme 'gruber-darker) ;; Load the Gruber Darker theme
-;; (rc/require-theme 'zenburn)    ;; Alternative theme: Zenburn
-;; (load-theme 'adwaita t)        ;; Alternative theme: Adwaita
-
-(eval-after-load 'zenburn
-  (set-face-attribute 'line-number nil :inherit 'default))
 
 ;; 2.4 Font Size
 ;; (set-frame-font "Comic Code 14" nil t)
+;; (set-frame-font "IBM Plex Mono 14" nil t)
 
 ;; 2.5 Word Wrap in Markdown
 (defun rc/enable-word-wrap ()
@@ -279,6 +276,21 @@ compilation-error-regexp-alist-alist
  'rfc-mode
  'sml-mode
  )
+
+;; 5.4 LaTeX supprt
+(rc/require 'auctex)
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+
+(rc/require 'pdf-tools)
+(pdf-tools-install)
+(setq TeX-PDF-mode t)
+(setq TeX-source-correlate-method 'synctex)
+(setq TeX-view-program-selection
+  '((output-pdf "Zathura")))
+(setq TeX-command-extra-options "-shell-escape -synctex=1")
+
 
 ;; ========================================
 ;; 6. Auto-Generated Custom Settings

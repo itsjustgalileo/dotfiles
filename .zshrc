@@ -1,13 +1,13 @@
 # Add deno completions to search path
 if [[ ":$FPATH:" != *":/home/galileo/.zsh/completions:"* ]]; then export FPATH="/home/galileo/.zsh/completions:$FPATH"; fi
 # Set the default editor
-export EDITOR='vi'
+export EDITOR='vim'
 
 # Enable command auto-correction
-unsetopt correct
+#unsetopt correct
 
 # Enable case-insensitive completion
-unsetopt nocaseglob
+#unsetopt nocaseglob
 
 # Enable history appending and timestamp in history
 setopt append_history
@@ -25,6 +25,7 @@ alias ls='ls --color=always'
 alias ll='ls -la'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
+alias emax='emacsclient -nc'
 
 # Configure git for colorized output
 git config --global color.ui auto
@@ -43,4 +44,3 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   exec startx 2>> "$HOME/.startx_errors.log"
 fi
-

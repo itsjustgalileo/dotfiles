@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/galileo/.zsh/completions:"* ]]; then export FPATH="/home/galileo/.zsh/completions:$FPATH"; fi
 # Set the default editor
 export EDITOR='vi'
 
@@ -41,3 +43,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   exec startx 2>> "$HOME/.startx_errors.log"
 fi
+

@@ -67,7 +67,8 @@
 (global-hl-line-mode t)         ;; Highlight current line
 
 ;; 2.3 Theme Configuration
-(rc/require-theme 'gruber-darker) ;; Load the Gruber Darker theme
+(load-theme 'protanopia t)        ;; Main protanopia theme
+;; (rc/require-theme 'gruber-darker) ;; Load the Gruber Darker theme
 ;; (rc/require-theme 'zenburn)    ;; Alternative theme: Zenburn
 ;; (load-theme 'adwaita t)        ;; Alternative theme: Adwaita
 
@@ -204,6 +205,7 @@
       (concat dired-omit-files "\\|^\\..+$"))
 (setq-default dired-dwim-target t)
 (setq dired-listing-switches "-alh")
+(setq dired-mouse-drag-files t)
 
 ;; 4.3 Custom Keybindings
 (global-set-key [f5] 'compile) ;; Compile with F5

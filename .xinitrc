@@ -5,16 +5,16 @@ if command -v pulseaudio > /dev/null; then
     pulseaudio --start
 fi
 
+# Set wallpaper using xwallpaper (if the image exists)
+if command -v feh > /dev/null; then
+    if [ -f ~/code/dotfiles/bg.webp ]; then
+        feh --bg-scale ~/code/dotfiles/bg.webp
+    fi
+fi
+
 # Merge Xresources (if .Xresources file exists)
 if [ -f ~/.Xresources ]; then
     xrdb -merge ~/.Xresources
-fi
-
-# Set wallpaper using xwallpaper (if the image exists)
-if command -v feh > /dev/null; then
-    if [ -f ~/code/dotfiles/bg.png ]; then
-        feh --bg-scale ~/code/dotfiles/bg.webp
-    fi
 fi
 
 # Start clipmenu

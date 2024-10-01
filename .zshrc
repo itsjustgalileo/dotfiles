@@ -40,7 +40,24 @@ unsetopt beep
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # Start X if no DISPLAY and at tty1
 if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   exec startx 2>> "$HOME/.startx_errors.log"
 fi
+
+# ghcup
+[ -f "/home/galileo/.ghcup/env" ] && . "/home/galileo/.ghcup/env" # ghcup-env
+
+# bun completions
+[ -s "/home/galileo/.bun/_bun" ] && source "/home/galileo/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+. "/home/galileo/.deno/env"
+
+# Initialize zsh completions (added by deno install script)
+autoload -Uz compinit
+compinit

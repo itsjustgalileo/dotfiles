@@ -70,11 +70,11 @@
 
 ;; 2.3 Theme Configuration
 (load-theme 'protanopia t)        ;; Main protanopia theme
-;; (rc/require-theme 'gruber-darker) ;; Load the Gruber Darker theme
 
 ;; 2.4 Font Size
 ;; (set-frame-font "Comic Code 14" nil t)
-(set-frame-font "IBM Plex Mono 14" nil t)
+(set-face-attribute 'default nil
+                    :font "IBM Plex Mono-14")
 
 ;; 2.5 Word Wrap in Markdown
 (defun rc/enable-word-wrap ()

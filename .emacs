@@ -308,6 +308,7 @@ compilation-error-regexp-alist-alist
  'typescript-mode
  'rfc-mode
  'sml-mode
+ 'rainbow-mode
  )
 
 ;; 5.4 LaTeX supprt

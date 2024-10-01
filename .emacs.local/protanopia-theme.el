@@ -1,3 +1,4 @@
+;; THIS NEEDS MAJOR UPDATE BUT IS WORKING AS INTENDEND SO FAR
 (deftheme protanopia
   "A theme for people with protanopia.")
 
@@ -13,7 +14,8 @@
       (cyan "#39c5cf")
       (green "#42a0ff")
       (purple "#d2a8ff")
-      (highlight "#6e768166")
+      (region "#0d4566")
+      (highlight "#0d2227")
       (cursor "#58a6ff")
       (border "#30363d")
       (comment "#8b949e"))
@@ -25,14 +27,14 @@
    `(default ((,class (:background ,bg :foreground ,fg))))
    `(cursor ((,class (:background ,cursor))))
    `(fringe ((,class (:background ,bg))))
-   `(region ((,class (:background ,highlight))))
+   `(region ((,class (:background ,region))))
    `(highlight ((,class (:background ,highlight))))
    `(link ((,class (:foreground ,blue :underline t))))
    `(link-visited ((,class (:foreground ,purple :underline t))))
    `(shadow ((,class (:foreground ,gray))))
 
    ;; Minibuffer
-   `(minibuffer-prompt ((,class (:foreground ,blue :weight bold))))
+   `(minibuffer-prompt ((,class (:foreground ,"#ff00ff" :weight bold))))
 
    ;; Mode line and powerline
    `(mode-line ((,class (:background ,bg-alt :foreground ,gray :box (:line-width -1 :style released-button)))))
@@ -43,19 +45,27 @@
    `(header-line ((,class (:background ,bg-alt :foreground ,gray :box nil))))
 
    ;; Font lock (syntax highlighting)
-   `(font-lock-builtin-face ((,class (:foreground ,blue))))
+   `(font-lock-builtin-face ((,class (:foreground ,"#1B64D2"))))
    `(font-lock-comment-face ((,class (:foreground ,comment :slant italic))))
-   `(font-lock-constant-face ((,class (:foreground ,purple))))
-   `(font-lock-function-name-face ((,class (:foreground ,orange))))
-   `(font-lock-keyword-face ((,class (:foreground ,yellow))))
-   `(font-lock-string-face ((,class (:foreground ,green))))
-   `(font-lock-type-face ((,class (:foreground ,yellow))))
-   `(font-lock-variable-name-face ((,class (:foreground ,orange))))
-   `(font-lock-warning-face ((,class (:foreground ,red :weight bold))))
+   `(font-lock-comment-delimiter-face ((,class (:foreground ,comment))))
+   `(font-lock-comment-doc-face ((,class (:foreground ,"#ff0000")))) ;; FIX ME
+   `(font-lock-comment-doc-string-face ((,class (:foreground ,"#ff0000")))) ;; FIX ME
+   `(font-lock-constant-face ((,class (:foreground ,"#1B64D2"))))
+   `(font-lock-function-name-face ((,class (:foreground ,"#D2A8FF"))))
+   `(font-lock-function-call-face ((,class (:foreground ,"#D2A8FF"))))
+   `(font-lock-keyword-face ((,class (:foreground ,"#B54019"))))
+   `(font-lock-number-face ((,class (:foreground ,"#1B64D2"))))
+   `(font-lock-operator-face ((,class (:foreground ,"#1B64D2"))))
+   `(font-lock-preprocessor-face ((t (:foreground ,"#AE8134"))))
+   `(font-lock-string-face ((,class (:foreground ,"#8DBDA5"))))
+   `(font-lock-type-face ((,class (:foreground ,"#AE8134")))) 
+   `(font-lock-reference-face ((,class (:foreground ,"#ff0000")))) ;; FIX ME
+   `(font-lock-variable-name-face ((,class (:foreground ,fg)))) ;; FIX ME
+   `(font-lock-warning-face ((,class (:foreground ,"#ff00ff" :weight bold))))
 
    ;; Line numbers
-   `(line-number ((,class (:foreground ,gray :background ,bg))))
-   `(line-number-current-line ((,class (:foreground ,fg :background ,bg))))
+   `(line-number ((,class (:foreground ,"#AE8134" :background ,bg))))
+   `(line-number-current-line ((,class (:foreground ,"#B54019" :background ,bg))))
 
    ;; Whitespace
    `(whitespace-space ((,class (:foreground ,border))))

@@ -29,11 +29,14 @@
 ;;    4.2 Dired Configuration
 ;;    4.3 Custom Keybindings
 ;;    4.4 Compilation Command Settings
+;;    4.5 Paredit
+;;    4.6 Whitespace mode
 ;; 5. Languages Configuration
 ;;    5.1 C/C++ Mode Settings
 ;;    5.2 Haskell Mode Settings
 ;;    5.3 Additional Modes and Packages
 ;;    5.4 LaTeX support
+;;    5.5 eldocs mode
 ;; ========================================
 
 ;; ========================================
@@ -97,6 +100,10 @@
 (unless (file-exists-p "~/.emacs.d/backups")
   (make-directory "~/.emacs.d/backups" t))
 
+;;; tramp
+;;; http://stackoverflow.com/questions/13794433/how-to-disable-autosave-for-tramp-buffers-in-emacs
+(setq tramp-auto-save-directory "/tmp")
+
 ;; 3.2 Auto-Refresh Buffers
 (electric-pair-mode 1)         ;; Enable automatic pairing of brackets
 (global-auto-revert-mode 1)    ;; Automatically refresh buffers when files change on disk
@@ -139,12 +146,6 @@
 (require 'company)
 
 (global-company-mode)
-
-;; Disable company mode in OCaml Tuareg mode
-(add-hook 'tuareg-mode-hook
-          (lambda ()
-            (interactive)
-            (company-mode 0)))
 
 ;; 3.6 Moving Text
 (rc/require 'move-text)
@@ -219,9 +220,39 @@ compilation-error-regexp-alist-alist
              '("\\([a-zA-Z0-9\\.]+\\)(\\([0-9]+\\)\\(,\\([0-9]+\\)\\)?) \\(Warning:\\)?"
                1 2 (4) (5)))
 
+;;; 4.5 Paredit
+(rc/require 'paredit)
+
+(defun rc/turn-on-paredit ()
+  (interactive)
+  (paredit-mode 1))
+
+(add-hook 'emacs-lisp-mode-hook  'rc/turn-on-paredit)
+(add-hook 'clojure-mode-hook     'rc/turn-on-paredit)
+(add-hook 'lisp-mode-hook        'rc/turn-on-paredit)
+(add-hook 'common-lisp-mode-hook 'rc/turn-on-paredit)
+(add-hook 'scheme-mode-hook      'rc/turn-on-paredit)
+(add-hook 'racket-mode-hook      'rc/turn-on-paredit)
+
+;;; 4.6 Whitespace mode
+(defun rc/set-up-whitespace-handling ()
+  (interactive)
+  (whitespace-mode 1)
+  (add-to-list 'write-file-functions 'delete-trailing-whitespace))
+
+(add-hook 'c++-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'c-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'emacs-lisp-mode 'rc/set-up-whitespace-handling)
+(add-hook 'java-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'rust-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'markdown-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'haskell-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'python-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'asm-mode-hook 'rc/set-up-whitespace-handling)
+(add-hook 'go-mode-hook 'rc/set-up-whitespace-handling)
 
 ;; ========================================
-;; 5. C/C++ Configuration
+;; 5. Languages Configuration
 ;; ========================================
 
 ;; 5.1 C Mode Settings
@@ -272,6 +303,7 @@ compilation-error-regexp-alist-alist
  'racket-mode
  'qml-mode
  'ag
+ 'hindent
  'elpy
  'typescript-mode
  'rfc-mode
@@ -291,6 +323,22 @@ compilation-error-regexp-alist-alist
 (setq TeX-view-program-selection
   '((output-pdf "Zathura")))
 (setq TeX-command-extra-options "-shell-escape -synctex=1")
+
+
+;;; 5.5 eldoc mode
+(defun rc/turn-on-eldoc-mode ()
+  (interactive)
+  (eldoc-mode 1))
+
+(add-hook 'emacs-lisp-mode-hook 'rc/turn-on-eldoc-mode)
+
+;;; Emacs lisp
+(add-hook 'emacs-lisp-mode-hook
+          '(lambda ()
+             (local-set-key (kbd "C-c C-j")
+                            (quote eval-print-last-sexp))))
+(add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
+
 
 ;; ========================================
 ;; ========================================

@@ -77,7 +77,7 @@
 ;; 2.4 Font Size
 ;; (set-frame-font "Comic Code 14" nil t)
 (set-face-attribute 'default nil
-                    :font "IBM Plex Mono-14")
+                    :font "IBM Plex Mono-12")
 
 ;; 2.5 Word Wrap in Markdown
 (defun rc/enable-word-wrap ()
@@ -220,20 +220,6 @@ compilation-error-regexp-alist-alist
              '("\\([a-zA-Z0-9\\.]+\\)(\\([0-9]+\\)\\(,\\([0-9]+\\)\\)?) \\(Warning:\\)?"
                1 2 (4) (5)))
 
-;;; 4.5 Paredit
-(rc/require 'paredit)
-
-(defun rc/turn-on-paredit ()
-  (interactive)
-  (paredit-mode 1))
-
-(add-hook 'emacs-lisp-mode-hook  'rc/turn-on-paredit)
-(add-hook 'clojure-mode-hook     'rc/turn-on-paredit)
-(add-hook 'lisp-mode-hook        'rc/turn-on-paredit)
-(add-hook 'common-lisp-mode-hook 'rc/turn-on-paredit)
-(add-hook 'scheme-mode-hook      'rc/turn-on-paredit)
-(add-hook 'racket-mode-hook      'rc/turn-on-paredit)
-
 ;;; 4.6 Whitespace mode
 (defun rc/set-up-whitespace-handling ()
   (interactive)
@@ -339,7 +325,6 @@ compilation-error-regexp-alist-alist
              (local-set-key (kbd "C-c C-j")
                             (quote eval-print-last-sexp))))
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
-
 
 ;; ========================================
 ;; ========================================

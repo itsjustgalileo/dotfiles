@@ -37,6 +37,7 @@
 ;;    5.3 Additional Modes and Packages
 ;;    5.4 LaTeX support
 ;;    5.5 eldocs mode
+;;    5.6 Personal modes
 ;; ========================================
 
 ;; ========================================
@@ -297,7 +298,7 @@ compilation-error-regexp-alist-alist
  'rainbow-mode
  )
 
-;; 5.4 LaTeX supprt
+;; 5.4 LaTeX support
 (rc/require 'auctex)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
@@ -325,6 +326,10 @@ compilation-error-regexp-alist-alist
              (local-set-key (kbd "C-c C-j")
                             (quote eval-print-last-sexp))))
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
+
+;; 5.6 Personal modes
+(require 'fb-mode) ;; https://github.com/rversteegen/fb-mode
+(add-to-list 'auto-mode-alist '("\\.bas\\'" . fb-mode))
 
 ;; ========================================
 ;; ========================================

@@ -197,3 +197,5 @@ bar {
 focus_follows_mouse no
 
 hide_edge_borders both
+
+bindsym $mod+b exec "~/boomer/boomer"

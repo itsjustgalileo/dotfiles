@@ -34,9 +34,9 @@
 ;; 5. Languages Configuration
 ;;    5.1 C/C++ Mode Settings
 ;;    5.2 Haskell Mode Settings
-;;    5.3 Additional Modes and Packages
+;;    5.3 eldocs mode
 ;;    5.4 LaTeX support
-;;    5.5 eldocs mode
+;;    5.5 Additional Modes and Packages
 ;; ========================================
 
 ;; ========================================
@@ -77,7 +77,7 @@
 ;; 2.4 Font Size
 ;; (set-frame-font "Comic Code 14" nil t)
 (set-face-attribute 'default nil
-                    :font "IBM Plex Mono-12")
+                    :font "BlexMono Nerd Font-12")
 
 ;; 2.5 Word Wrap in Markdown
 (defun rc/enable-word-wrap ()
@@ -90,35 +90,7 @@
 ;; 3. User Experience (UX) Enhancements
 ;; ========================================
 
-;; 3.1 Backup File Settings
-(setq backup-directory-alist `(("." . "~/.emacs.d/backups"))) ;; Backup location
-(setq backup-by-copying t)     ;; Always copy files when creating backups
-(setq delete-old-versions t)   ;; Automatically delete old backup versions
-(setq version-control t)       ;; Enable version control for backups
-
-;; Ensure backup directory exists
-(unless (file-exists-p "~/.emacs.d/backups")
-  (make-directory "~/.emacs.d/backups" t))
-
-;;; tramp
-;;; http://stackoverflow.com/questions/13794433/how-to-disable-autosave-for-tramp-buffers-in-emacs
-(setq tramp-auto-save-directory "/tmp")
-
-;; 3.2 Auto-Refresh Buffers
-(electric-pair-mode 1)         ;; Enable automatic pairing of brackets
-(global-auto-revert-mode 1)    ;; Automatically refresh buffers when files change on disk
-
-;; Auto-refresh dired buffers
-(defun my-dired-auto-revert ()
-  "Automatically refresh dired buffers when the underlying files change."
-  (when (derived-mode-p 'dired-mode)
-    (revert-buffer)))
-
-(add-hook 'dired-mode-hook 'auto-revert-mode)
-(setq auto-revert-interval 1)  ;; Set auto-revert interval to 5 seconds
-
-;; 3.3 Magit Integration
-(rc/require 'cl-lib)            ;; Require cl-lib for Magit
+;; 3.1 Magit Integration
 (rc/require 'magit)             ;; Require Magit
 (rc/require 'git-gutter)   ;; Require Git Gutter Plus
 
@@ -131,28 +103,13 @@
 (global-set-key (kbd "C-c m s") 'magit-status) ;; Keybinding for Magit status
 (global-set-key (kbd "C-c m l") 'magit-log)    ;; Keybinding for Magit log
 
-;; 3.4 Multiple Cursors
-(rc/require 'multiple-cursors)
-
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C->")         'mc/mark-next-like-this)
-(global-set-key (kbd "C-<")         'mc/mark-previous-like-this)
-(global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
-(global-set-key (kbd "C-\"")        'mc/skip-to-next-like-this)
-(global-set-key (kbd "C-:")         'mc/skip-to-previous-like-this)
-
-;; 3.5 Autocompletion with Company
+;; 3.2 Autocompletion with Company
 (rc/require 'company)
 (require 'company)
 
 (global-company-mode)
 
-;; 3.6 Moving Text
-(rc/require 'move-text)
-(global-set-key (kbd "M-p") 'move-text-up)
-(global-set-key (kbd "M-n") 'move-text-down)
-
-;; 3.8 Snippets
+;; 3.3 Snippets
 (rc/require 'yasnippet)
 
 (require 'yasnippet)
@@ -162,7 +119,7 @@
 
 (yas-global-mode 1)
 
-;; 3.9 autoformatting with clang format
+;; 3.4 autoformatting with clang format
 (rc/require 'clang-format)
 
 (defun clang-format-save-hook-for-this-buffer ()
@@ -208,8 +165,8 @@
 
 ;; 4.3 Custom Keybindings
 (global-set-key [f5] 'compile) ;; Compile with F5
-(global-set-key [f9] 'gdb)     ;; Debug with F9
 (global-set-key [f6] 'eshell)  ;; Open Eshell with F6
+(global-set-key [f9] 'gdb)     ;; Debug with F9
 
 ;; 4.4 Compilation Command Settings
 (require 'compile)
@@ -220,22 +177,47 @@ compilation-error-regexp-alist-alist
              '("\\([a-zA-Z0-9\\.]+\\)(\\([0-9]+\\)\\(,\\([0-9]+\\)\\)?) \\(Warning:\\)?"
                1 2 (4) (5)))
 
-;;; 4.6 Whitespace mode
-(defun rc/set-up-whitespace-handling ()
-  (interactive)
-  (whitespace-mode 1)
-  (add-to-list 'write-file-functions 'delete-trailing-whitespace))
+;; 4.5 Backup File Settings
+(setq backup-directory-alist `(("." . "~/.emacs.d/backups"))) ;; Backup location
+(setq backup-by-copying t)     ;; Always copy files when creating backups
+(setq delete-old-versions t)   ;; Automatically delete old backup versions
+(setq version-control t)       ;; Enable version control for backups
 
-(add-hook 'c++-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'c-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'emacs-lisp-mode 'rc/set-up-whitespace-handling)
-(add-hook 'java-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'rust-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'markdown-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'haskell-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'python-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'asm-mode-hook 'rc/set-up-whitespace-handling)
-(add-hook 'go-mode-hook 'rc/set-up-whitespace-handling)
+;; Ensure backup directory exists
+(unless (file-exists-p "~/.emacs.d/backups")
+  (make-directory "~/.emacs.d/backups" t))
+
+;;; tramp
+;;; http://stackoverflow.com/questions/13794433/how-to-disable-autosave-for-tramp-buffers-in-emacs
+(setq tramp-auto-save-directory "/tmp")
+
+;; 4.6 Auto-Refresh Buffers
+(electric-pair-mode 1)         ;; Enable automatic pairing of brackets
+(global-auto-revert-mode 1)    ;; Automatically refresh buffers when files change on disk
+
+;; Auto-refresh dired buffers
+(defun my-dired-auto-revert ()
+  "Automatically refresh dired buffers when the underlying files change."
+  (when (derived-mode-p 'dired-mode)
+    (revert-buffer)))
+
+(add-hook 'dired-mode-hook 'auto-revert-mode)
+(setq auto-revert-interval 1)  ;; Set auto-revert interval to 5 seconds
+
+;; 4.7 Moving Text
+(rc/require 'move-text)
+(global-set-key (kbd "M-p") 'move-text-up)
+(global-set-key (kbd "M-n") 'move-text-down)
+
+;; 4.8 Multiple Cursors
+(rc/require 'multiple-cursors)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->")         'mc/mark-next-like-this)
+(global-set-key (kbd "C-<")         'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<")     'mc/mark-all-like-this)
+(global-set-key (kbd "C-\"")        'mc/skip-to-next-like-this)
+(global-set-key (kbd "C-:")         'mc/skip-to-previous-like-this)
 
 ;; ========================================
 ;; 5. Languages Configuration
@@ -261,43 +243,7 @@ compilation-error-regexp-alist-alist
 (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
 (add-hook 'haskell-mode-hook 'haskell-doc-mode)
 
-;; 5.3 Additional Modes and Packages
-(rc/require
- 'scala-mode
- 'd-mode
- 'yaml-mode
- 'glsl-mode
- 'tuareg
- 'lua-mode
- 'less-css-mode
- 'graphviz-dot-mode
- 'clojure-mode
- 'cmake-mode
- 'rust-mode
- 'csharp-mode
- 'nim-mode
- 'jinja2-mode
- 'markdown-mode
- 'purescript-mode
- 'nix-mode
- 'dockerfile-mode
- 'toml-mode
- 'nginx-mode
- 'kotlin-mode
- 'go-mode
- 'php-mode
- 'racket-mode
- 'qml-mode
- 'ag
- 'hindent
- 'elpy
- 'typescript-mode
- 'rfc-mode
- 'sml-mode
- 'rainbow-mode
- )
-
-;; 5.4 LaTeX supprt
+;; 5.3 LaTeX support
 (rc/require 'auctex)
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
@@ -312,7 +258,7 @@ compilation-error-regexp-alist-alist
 (setq TeX-command-extra-options "-shell-escape -synctex=1")
 
 
-;;; 5.5 eldoc mode
+;;; 5.4 eldoc mode
 (defun rc/turn-on-eldoc-mode ()
   (interactive)
   (eldoc-mode 1))
@@ -325,6 +271,53 @@ compilation-error-regexp-alist-alist
              (local-set-key (kbd "C-c C-j")
                             (quote eval-print-last-sexp))))
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
+
+;; 5.5 Additional Modes and Packages
+(rc/require
+ 'yaml-mode
+ 'glsl-mode
+ 'tuareg
+ 'lua-mode
+ 'less-css-mode
+ 'graphviz-dot-mode
+ 'clojure-mode
+ 'cmake-mode
+ 'rust-mode
+ 'nim-mode
+ 'markdown-mode
+ 'dockerfile-mode
+ 'toml-mode
+ 'go-mode
+ 'php-mode
+ 'racket-mode
+ 'qml-mode
+ 'hindent
+ 'elpy
+ 'typescript-mode
+ 'rainbow-mode
+ 'proof-general
+ 'elixir-mode
+ )
+
+;; Personal modes
+;; FreeBasic mode
+(require 'fb-mode) ;; https://github.com/rversteegen/fb-mode
+(autoload 'basic-generic-mode "basic-mode" "Major mode for editing BASIC code." t)
+(add-to-list 'auto-mode-alist '("\\.bas\\'" . basic-generic-mode))
+
+;; Lisp mode
+(load (expand-file-name "~/.quicklisp/slime-helper.el"))
+(setq inferior-lisp-program "sbcl")
+
+;; Doxygen
+(require 'gendoxy)
+
+;; Elixir
+;; Highlights *.elixir2 as well
+(add-to-list 'auto-mode-alist '("\\.elixir2\\'" . elixir-mode))
+;; Create a buffer-local hook to run elixir-format on save, only when we enable elixir-mode.
+(add-hook 'elixir-mode-hook
+          (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
 
 ;; ========================================
 ;; ========================================

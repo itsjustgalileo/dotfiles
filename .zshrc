@@ -2,6 +2,7 @@
 export EDITOR='vim'
 
 # Aliases
+alias l='ls -l -a --color=always'
 alias ll='ls -l -a --color=always'
 alias emax='emacsclient -nc'
 alias grep='grep --color=auto'
@@ -14,7 +15,7 @@ alias mv='rsync --progress --remove-source-files'
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn
 # This line obtains information from the vcs.
-zstyle ':vcs_info:git*' formats " (%b) -"
+zstyle ':vcs_info:git*' formats " (%b) %f-"
 precmd() {
     vcs_info
 }
@@ -25,8 +26,11 @@ setopt prompt_subst
 # Terminal protanopia colors
 export LS_COLORS='di=34:fi=0:ln=36:pi=33:so=35:bd=44:cd=43:or=31:mi=05;37:ex=32:*.tar=33:*.gz=33:*.tgz=33:*.zip=33:*.z=33:*.7z=33:*.rar=33:*.jar=33:*.tar.gz=33:*.tgz=33:*.xz=33:*.bz2=33:*.lz=33:*.lzma=33:*.pdf=33:*.ppt=33:*.doc=33:*.docx=33:*.odt=33:*.ods=33:*.svg=33'
 
+# GTK theme
+export GTK_THEME=Arc-Dark
+
 # Prompt
-export PROMPT='%F{cyan}%B%n@%m - %F{178}${vcs_info_msg_0_} %f%d %f%b%#'
+export PROMPT='%F{cyan}%B%n@%m %f- %F{yellow}${vcs_info_msg_0_} %f%d %f%b%#'
 
 # Manage NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -39,5 +43,5 @@ if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
   exec startx 2>> "$HOME/.startx_errors.log"
 fi
 
-
+# GHCup
 [ -f "/home/$USER/.ghcup/env" ] && . "/home/$USER/.ghcup/env" # ghcup-env

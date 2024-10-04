@@ -306,6 +306,7 @@ compilation-error-regexp-alist-alist
 (add-to-list 'auto-mode-alist '("\\.bas\\'" . basic-generic-mode))
 
 ;; Lisp mode
+(rc/require 'slime)
 (load (expand-file-name "~/.quicklisp/slime-helper.el"))
 (setq inferior-lisp-program "sbcl")
 

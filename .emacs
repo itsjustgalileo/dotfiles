@@ -76,7 +76,7 @@
 ;; 2.4 Font Size
 ;; (set-frame-font "Comic Code 14" nil t)
 (set-face-attribute 'default nil
-                    :font "BlexMono Nerd Font-12")
+                    :font "IBM Plex Mono-12")
 
 ;; 2.5 Word Wrap in Markdown
 (defun rc/enable-word-wrap ()

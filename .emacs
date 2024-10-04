@@ -16,27 +16,26 @@
 ;;    2.4 Font Size
 ;;    2.5 Word Wrap in Markdown
 ;; 3. User Experience (UX) Enhancements
-;;    3.1 Backup File Settings
-;;    3.2 Auto-Refresh Buffers
-;;    3.3 Magit Integration
-;;    3.4 Multiple Cursors
-;;    3.5 Autocompletion with Company
-;;    3.6 Moving Text
-;;    3.7 Additional Modes and Packages
-;;    3.9 Snippets
+;;    3.1 Magit Integration
+;;    3.2 Autocompletion with Company
+;;    3.3 Additional Modes and Packages
+;;    3.4 Snippets
 ;; 4. Emacs Setup and Customization
 ;;    4.1 Ido Mode and Smex Integration
 ;;    4.2 Dired Configuration
 ;;    4.3 Custom Keybindings
 ;;    4.4 Compilation Command Settings
-;;    4.5 Paredit
-;;    4.6 Whitespace mode
+;;    4.5 Backup File Settings
+;;    4.6 Auto-Refresh Buffers
+;;    4.7 Moving Text
+;;    4.8 Multiple Cursors
 ;; 5. Languages Configuration
 ;;    5.1 C/C++ Mode Settings
 ;;    5.2 Haskell Mode Settings
-;;    5.3 eldocs mode
-;;    5.4 LaTeX support
+;;    5.3 LaTeX support
+;;    5.4 eldocs mode
 ;;    5.5 Additional Modes and Packages
+;;    5.6 Personal modes
 ;; ========================================
 
 ;; ========================================
@@ -271,6 +270,7 @@ compilation-error-regexp-alist-alist
              (local-set-key (kbd "C-c C-j")
                             (quote eval-print-last-sexp))))
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
+
 
 ;; 5.5 Additional Modes and Packages
 (rc/require

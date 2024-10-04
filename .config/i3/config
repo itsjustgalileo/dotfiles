@@ -200,5 +200,5 @@ hide_edge_borders both
 
 bindsym $mod+c exec chromium
 bindsym $mod+m exec emacs
-bindsym $mod+n exec emax
+bindsym $mod+Shift+m emax
 bindsym $mod+b exec "~/utils/boomer/boomer"

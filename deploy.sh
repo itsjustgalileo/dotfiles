@@ -15,6 +15,11 @@ for item in "$SCRIPT_DIR"/* "$SCRIPT_DIR"/.*; do
         continue
     fi
 
+    # Skip deploy README and image
+    if [ "$(basename "$item")" = "deploy.sh" ] || [ "$(basename "$item")" = "dotfiles.jpeg" ] || [ "$(basename "$item")" = "README.md" ] || [ "$(basename "$item")" = "bg.webp" ]; then
+        continue
+    fi
+    
     # Extract the name and target path
     name=$(basename "$item")
     target="$HOME/$name"

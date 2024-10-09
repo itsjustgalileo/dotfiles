@@ -253,9 +253,7 @@ compilation-error-regexp-alist-alist
 (setq TeX-PDF-mode t)
 (setq TeX-source-correlate-method 'synctex)
 (setq TeX-view-program-selection
-  '((output-pdf "Zathura")))
-(setq TeX-command-extra-options "-shell-escape -synctex=1")
-
+  '((output-pdf "evince")))
 
 ;;; 5.4 eldoc mode
 (defun rc/turn-on-eldoc-mode ()
@@ -304,11 +302,6 @@ compilation-error-regexp-alist-alist
 (require 'fb-mode) ;; https://github.com/rversteegen/fb-mode
 (autoload 'basic-generic-mode "basic-mode" "Major mode for editing BASIC code." t)
 (add-to-list 'auto-mode-alist '("\\.bas\\'" . basic-generic-mode))
-
-;; Lisp mode
-(rc/require 'slime)
-(load (expand-file-name "~/.quicklisp/slime-helper.el"))
-(setq inferior-lisp-program "sbcl")
 
 ;; Doxygen
 (require 'gendoxy)

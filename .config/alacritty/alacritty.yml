@@ -3,6 +3,10 @@ font:
   normal:
     family: Noto Sans Mono
     style: Regular
+  # Unicode and Emoji fallback
+    fallback:
+      - Noto Color Emoji
+      - Noto Sans Mono CJK SC
 
   # Bold
   bold:

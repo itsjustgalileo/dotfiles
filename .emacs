@@ -13,7 +13,7 @@
 ;;    2.1 Basic UI Tweaks
 ;;    2.2 Line Numbers and Highlighting
 ;;    2.3 Theme Configuration
-;;    2.4 Font Size
+;;    2.4 Font Settings
 ;;    2.5 Word Wrap in Markdown
 ;; 3. User Experience (UX) Enhancements
 ;;    3.1 Magit Integration
@@ -73,8 +73,15 @@
 ;; 2.3 Theme Configuration
 (load-theme 'protanopia t)        ;; Main protanopia theme
 
-;; 2.4 Font Size
-;; (set-frame-font "Comic Code 14" nil t)
+;; 2.4 Font Settings
+(set-face-attribute 'default nil
+                    :family "Noto Sans Mono"
+                    :height 100)
+(set-fontset-font t 'unicode "Noto Sans" nil 'prepend)
+(set-fontset-font t 'emoji "Noto Color Emoji" nil 'preprend)
+(set-fontset-font t 'han "Noto Sans CJK SC" nil 'preprend)
+(set-fontset-font t 'kana "Noto Sans CJK JP" nil 'preprend)
+(set-fontset-font t 'hangul "Noto Sans CJK KR" nil 'preprend)
 
 ;; 2.5 Word Wrap in Markdown
 (defun rc/enable-word-wrap ()

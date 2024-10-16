@@ -1,0 +1,31 @@
+font:
+  # Normal (Roman)
+  normal:
+    family: Noto Sans Mono
+    style: Regular
+
+  # Bold
+  bold:
+    family: Noto Sans Mono
+    style: Bold
+
+  # Italic
+  italic:
+    family: Noto Sans Mono
+    style: italic
+
+  # Font size
+  size: 10.0
+
+  # Extra offset after each character
+  offset:
+    x: 0
+    y: 0
+
+  # Glyph pos within the cell
+  glyph_offset:
+    x: 0
+    y: 0
+
+  # Thin characters rendering
+  use_thin_strokes: true

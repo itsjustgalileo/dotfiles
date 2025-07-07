@@ -1,0 +1,24 @@
+[font]
+size = 10.0
+# use_thin_strokes = true
+
+[font.bold]
+family = "Noto Sans Mono"
+style = "Bold"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "Noto Sans Mono"
+style = "italic"
+
+[font.normal]
+# fallback = ["Noto Color Emoji", "Noto Sans Mono CJK SC", "Noto Sans Symbols"]
+family = "Noto Sans Mono"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0

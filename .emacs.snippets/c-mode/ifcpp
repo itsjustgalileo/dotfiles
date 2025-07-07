@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: ifcpp
+# key: ifcpp
+# --
+#ifdef __cplusplus
+$0
+#endif /* __cplusplus */

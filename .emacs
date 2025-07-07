@@ -255,10 +255,13 @@ compilation-error-regexp-alist-alist
 
 (rc/require 'pdf-tools)
 (pdf-tools-install)
-(setq TeX-PDF-mode t)
+(setq TeX-PDF-mode t) ;; Compile directement en PDF
+(setq TeX-auto-save t) ;; Sauvegarde automatique
+(setq TeX-parse-self t) ;; Analyse automatique
+(setq-default TeX-master nil) ;; Demande le master pour les documents multi-fichiers
 (setq TeX-source-correlate-method 'synctex)
 (setq TeX-view-program-selection
-  '((output-pdf "evince")))
+  '((output-pdf "Okular")))
 
 ;;; 5.4 eldoc mode
 (defun rc/turn-on-eldoc-mode ()
@@ -273,7 +276,6 @@ compilation-error-regexp-alist-alist
              (local-set-key (kbd "C-c C-j")
                             (quote eval-print-last-sexp))))
 (add-to-list 'auto-mode-alist '("Cask" . emacs-lisp-mode))
-
 
 ;; 5.5 Additional Modes and Packages
 (rc/require
@@ -317,6 +319,9 @@ compilation-error-regexp-alist-alist
 ;; Create a buffer-local hook to run elixir-format on save, only when we enable elixir-mode.
 (add-hook 'elixir-mode-hook
           (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
+
+(rc/require 'slime)
+(setq inferior-lisp-program "sbcl")
 
 ;; ========================================
 ;; ========================================

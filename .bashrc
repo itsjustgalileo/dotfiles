@@ -27,4 +27,5 @@ if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
 fi
 
 # PS1 Prompt (simpler sh prompt, no colors)
-PS1='\u@\h:\w\$ '
+PS1='\u@\h:\w\$'
+. "/home/galileo/.deno/env"

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: ifcppdone
+# key: ifcppf
+# --
+/* Ends C function definitions when using C++ */
+#ifdef __cplusplus
+}
+#endif

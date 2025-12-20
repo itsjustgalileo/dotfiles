@@ -15,6 +15,7 @@
 ;;    2.3 Theme Configuration
 ;;    2.4 Font Settings
 ;;    2.5 Word Wrap in Markdown
+;;    2.6 Sort dirs first
 ;; 3. User Experience (UX) Enhancements
 ;;    3.1 Magit Integration
 ;;    3.2 Autocompletion with Company
@@ -75,9 +76,9 @@
 
 ;; 2.4 Font Settings
 (set-face-attribute 'default nil
-                    :family "Noto Sans Mono"
-                    :height 100)
-(set-fontset-font t 'unicode "Noto Sans" nil 'prepend)
+                    :family "Liberation Mono"
+                    :height 110)
+(set-fontset-font t 'unicode "Noto Sans" nil 'preprend)
 (set-fontset-font t 'emoji "Noto Color Emoji" nil 'preprend)
 (set-fontset-font t 'han "Noto Sans CJK SC" nil 'preprend)
 (set-fontset-font t 'kana "Noto Sans CJK JP" nil 'preprend)
@@ -89,6 +90,11 @@
   (toggle-word-wrap 1))
 
 (add-hook 'markdown-mode-hook 'rc/enable-word-wrap)
+
+;; 2.6 Directories first
+(require 'ls-lisp)
+(setq ls-lisp-dirs-first t)
+(setq ls-lisp-use-insert-directory-program nil) ;; Ensures Emacs uses the Lisp emulation
 
 ;; ========================================
 ;; 3. User Experience (UX) Enhancements
@@ -305,10 +311,15 @@ compilation-error-regexp-alist-alist
  )
 
 ;; Personal modes
+
 ;; FreeBasic mode
 (require 'fb-mode) ;; https://github.com/rversteegen/fb-mode
 (autoload 'basic-generic-mode "basic-mode" "Major mode for editing BASIC code." t)
 (add-to-list 'auto-mode-alist '("\\.bas\\'" . basic-generic-mode))
+
+;; Ada mode
+(require 'ada-simple-mode)
+(add-to-list 'auto-mode-alist '("\\.ad[abs]\\'" . ada-simple-mode))
 
 ;; Doxygen
 (require 'gendoxy)
@@ -320,6 +331,7 @@ compilation-error-regexp-alist-alist
 (add-hook 'elixir-mode-hook
           (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
 
+;; Common Lisp
 (rc/require 'slime)
 (setq inferior-lisp-program "sbcl")
 

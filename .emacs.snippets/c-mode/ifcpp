@@ -2,6 +2,7 @@
 # name: ifcpp
 # key: ifcpp
 # --
+/* Set up for C function definitions, even when using C++ */
 #ifdef __cplusplus
-$0
-#endif /* __cplusplus */
+extern "C" {
+#endif

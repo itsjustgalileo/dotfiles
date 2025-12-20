@@ -1,9 +1,14 @@
+case $- in
+  *i*) ;;
+  *) return ;;
+esac
+
 # Default editor
 export EDITOR='vim'
 
 # Aliases (the `--color` option may not be available in plain sh environments)
-alias l='ls -l -a --color=always'
-alias ll='ls -l -a --color=always'
+alias l='ls -l -a --color=always --group-directories-first'
+alias ll='ls -l -a --color=always --group-directories-first'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
 
@@ -28,4 +33,5 @@ fi
 
 # PS1 Prompt (simpler sh prompt, no colors)
 PS1='\u@\h:\w\$'
-. "/home/galileo/.deno/env"
+[ -f "$HOME/.deno/env" ] && . "$HOME/.deno/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"

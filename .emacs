@@ -76,7 +76,7 @@
 
 ;; 2.4 Font Settings
 (set-face-attribute 'default nil
-                    :family "Liberation Mono"
+                    :family "Monaspace Neon NF"
                     :height 110)
 (set-fontset-font t 'unicode "Noto Sans" nil 'preprend)
 (set-fontset-font t 'emoji "Noto Color Emoji" nil 'preprend)
@@ -148,6 +148,27 @@
 (add-hook 'c-mode-hook (lambda () (clang-format-save-hook-for-this-buffer)))
 (add-hook 'c++-mode-hook (lambda () (clang-format-save-hook-for-this-buffer)))
 (add-hook 'glsl-mode-hook (lambda () (clang-format-save-hook-for-this-buffer)))
+
+(add-to-list 'auto-mode-alist '("\\.clang-format\\'" . yaml-mode))
+
+(add-to-list 'load-path (expand-file-name "./.emacs.local/doxymacs/lisp/"))
+(require 'doxymacs)
+
+;; Now configure as you want: set up keybindings, hooks, and
+;; doxygen-dirs.
+
+(define-prefix-command 'doxymacs-prefix)
+(global-set-key (kbd "C-c d") 'doxymacs-prefix)
+
+(define-key doxymacs-prefix (kbd "?") 'doxymacs-lookup)
+(define-key doxymacs-prefix (kbd "r") 'doxymacs-rescan-tags)
+(define-key doxymacs-prefix (kbd "RET") 'doxymacs-insert-command)
+(define-key doxymacs-prefix (kbd "f") 'doxymacs-insert-function-comment)
+(define-key doxymacs-prefix (kbd "i") 'doxymacs-insert-file-comment)
+(define-key doxymacs-prefix (kbd ";") 'doxymacs-insert-member-comment)
+(define-key doxymacs-prefix (kbd "m") 'doxymacs-insert-blank-multiline-comment)
+(define-key doxymacs-prefix (kbd "s") 'doxymacs-insert-blank-singleline-comment)
+(define-key doxymacs-prefix (kbd "@") 'doxymacs-insert-grouping-comments)
 
 ;; ========================================
 ;; 4. Emacs Setup and Customization
@@ -334,6 +355,10 @@ compilation-error-regexp-alist-alist
 ;; Common Lisp
 (rc/require 'slime)
 (setq inferior-lisp-program "sbcl")
+
+;; gitignore
+(require 'gitignore-mode)
+(add-to-list 'auto-mode-alist '("\\.gitignore\\'" . gitignore-mode))
 
 ;; ========================================
 ;; ========================================

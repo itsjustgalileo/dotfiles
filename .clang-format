@@ -1,11 +1,11 @@
-# Base style to use. Setting this to LLVM will apply LLVM's default formatting style.
+# @file .clang-format
+# @date 2026-03-09
+# @author galileo
+#
 BasedOnStyle: LLVM
-# AlignAfterOpenBracket: true
-# AccessModifierOffset: 4
-# AlignArrayOfStructures: Right
-# AlignConsecutiveAssignments: Consecutive
-# AlignConsecutiveBitFields: Consecutive
-# AlignConsecutiveDeclarations: true
+
+# Language
+Language: C
 
 # Number of spaces to use for indentation.
 IndentWidth: 4
@@ -40,9 +40,10 @@ BraceWrapping:
 
 # Determines whether to break lines after the return type.
 # Options:
-# - None: Do not force line breaks.
-# - AllDefinitions: Break lines after all function definitions.
-AlwaysBreakAfterDefinitionReturnType: AllDefinitions
+# - None: Break after return type automatically. `PenaltyReturnTypeOnItsOwnLine` is taken into account.
+# - All: Always break after the return type.
+# - TopLevel: Always break after the return types of top-level functions.
+AlwaysBreakAfterDefinitionReturnType: None
 
 # Allows short functions to be on a single line.
 # Options:
@@ -59,13 +60,13 @@ AllowShortFunctionsOnASingleLine: Empty
 AllowShortBlocksOnASingleLine: Empty
 
 # Limits the number of characters per line. 0 disables this limit.
-ColumnLimit: 0
+ColumnLimit: 80
 
 # Style for braced initializers.
 # Options:
 # - false: Uses the default style.
 # - true: Applies C++11 braced list style.
-Cpp11BracedListStyle: false
+Cpp11BracedListStyle: true
 
 # Determines where to place pointers.
 # Options:
@@ -83,14 +84,21 @@ SpaceBeforeParens: ControlStatements
 # Number of spaces to use for indentation of continued lines.
 ContinuationIndentWidth: 4
 
+# IndentExternBlockStyle is the type of indenting of extern blocks.
+# Possible values:
+# - AfterExternBlock: Backwards compatible with AfterExternBlock’s indenting.
+# - NoIndent: Does not indent extern blocks.
+# - Indent: Indent extern blocks.
+IndentExternBlock: Indent
+
 # Controls breaking lines before binary operators.
 # Options:
 # - NonAssignment: Break before non-assignment operators.
 # - All: Break before all binary operators.
 # - None: Do not break before binary operators.
-BreakBeforeBinaryOperators: NonAssignment
+BreakBeforeBinaryOperators: All
 
-# Adds a final newline at the end of the file.
+# Insert a newline at end of file if missing.
 InsertNewlineAtEOF: true
 
 # Determines if includes should be sorted.

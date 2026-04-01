@@ -1,36 +1,97 @@
 # -*- mode: snippet -*-
 # name: Markdown Template
 # key: mdtemplate
+# expand-env: ((yas-indent-line 'fixed))
 # --
-# PROJECT NAME
+# ${1:}
 
 ---
 
-## 🗨️ PRESENTATION
+## SUMMARY
+
+- [Presentation](#presentation)
+- [Prerequisites](#prerequisites)
+- [Supported platforms](#supported-platforms)
+- [How to use](#how-to-use)
+- [Examples](#examples)
+- [Screenshots](#screenshots)
+- [To do](#todo)
+- [References](#references)
 
 ---
 
-## 🖥️ SUPPORTED PLATFORMS
+## PRESENTATION
+
+${0:}
+
+---
+
+## PREREQUISITES
+
+---
+
+## SUPPORTED PLATFORMS
 
 - [ ] Windows
-- [ ] Linux
-- [ ] macOS
-- [ ] Web
-- [ ] iOS
-- [ ] Android
+  - [ ] Desktop Win32 API
+  - [ ] Win GDK
+- [ ] UNIX
+  - [ ] Linux
+  - [ ] FreeBSD
+  - [ ] OpenBSD
+  - [ ] NetBSD
+  - [ ] DragonFlyBSD
+  - [ ] Android
+- [ ] Apple
+  - [ ] macOS
+  - [ ] iOS
+  - [ ] tvOS
+  - [ ] WatchOS
+  - [ ] Simulator
+- [ ] Web (Emscripten)
+- [ ] PlayStation
+  - [ ] PS1
+  - [ ] PS2
+  - [ ] PS3
+  - [ ] PS4
+  - [ ] PS5
+  - [ ] PSP
+  - [ ] PSVita
+- [ ] XBox
+  - [ ] XBox
+  - [ ] XBox 360
+  - [ ] XBox One
+  - [ ] XBox X
+  - [ ] XBox S
+- [ ] Nintendo
+  - [ ] GameBoy
+  - [ ] NES
+  - [ ] SNES
+  - [ ] N64
+  - [ ] GameCube
+  - [ ] 3DS
+  - [ ] Switch
+  
+---
+
+## HOW TO USE
+
+1- Clone repo:
+```sh
+```
 
 ---
 
-## ✅ PREREQUISITES
+## EXAMPLES
 
 ---
 
-## ❓ HOW TO USE
+## SCREENSHOTS
 
 ---
 
-## 📋 TODO
+## TODO
 
 ---
 
-## ↩️ REFERENCES
+## REFERENCES

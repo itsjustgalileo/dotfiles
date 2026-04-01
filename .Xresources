@@ -6,7 +6,7 @@ Xft.hintstyle:  hintmedium
 URxvt.termName: rxvt
 URxvt*depth: 32
 URxvt.transparent: false
-URxvt.font: xft:Noto Sans Mono:size=10
+URxvt.font: xft:Monaspace Neon NF:size=11
 URxvt.scrollBar: false
 URxvt.iconFile: .galileo/icons/terminal-icon.png
 

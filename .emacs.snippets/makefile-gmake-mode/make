@@ -3,7 +3,7 @@
 # key: make
 # expand-env: ((yas-indent-line 'fixed))
 # --
-CFLAGS=-Wall -Wextra -std=c11 -pedantic
+CFLAGS=-Wall -Wextra -Werror -std=c99 -pedantic
 LIBS=
 
 $1: $2

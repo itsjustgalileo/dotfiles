@@ -1,7 +1,7 @@
 font:
   # Normal (Roman)
   normal:
-    family: Noto Sans Mono
+    family: Monaspace Neon NF
     style: Regular
   # Unicode and Emoji fallback
     fallback:
@@ -11,16 +11,16 @@ font:
 
   # Bold
   bold:
-    family: Noto Sans Mono
+    family: Monaspace Neon NF
     style: Bold
 
   # Italic
   italic:
-    family: Noto Sans Mono
+    family: Monaspace Neon NF
     style: italic
 
   # Font size
-  size: 10.0
+  size: 11.0
 
   # Extra offset after each character
   offset:

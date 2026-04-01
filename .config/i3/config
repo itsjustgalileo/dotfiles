@@ -17,7 +17,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:Noto Sans 8
+font pango:Monaspace Neon NF 8
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -119,12 +119,12 @@ set $ws1 "1: Web"
 set $ws2 "2: Root"
 set $ws3 "3: Dev"
 set $ws4 "4: Study"
-set $ws5 "5: Fun"
-set $ws6 "6: Extra"
+set $ws5 "5: Finance"
+set $ws6 "6: "
 set $ws7 "7: "
 set $ws8 "8: "
-set $ws9 "9: "
-set $ws10 "10: "
+set $ws9 "9: Fun"
+set $ws10 "10: Extra"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

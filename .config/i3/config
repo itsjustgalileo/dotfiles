@@ -195,6 +195,6 @@ focus_follows_mouse no
 
 hide_edge_borders both
 
-bindsym $mod+b exec chromium
+bindsym $mod+b exec brave
 bindsym $mod+m exec emacs
 bindsym $mod+z exec "~/utils/boomer/boomer"

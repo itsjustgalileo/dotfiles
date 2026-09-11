@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 ;; ========================================
 ;; Emacs Configuration File
 ;; ========================================
@@ -21,6 +22,7 @@
 ;;    3.2 Autocompletion with Company
 ;;    3.3 Additional Modes and Packages
 ;;    3.4 Snippets
+;;    3.5 Enable transient mark mode
 ;; 4. Emacs Setup and Customization
 ;;    4.1 Ido Mode and Smex Integration
 ;;    4.2 Dired Configuration
@@ -75,9 +77,17 @@
 (load-theme 'protanopia t)        ;; Main protanopia theme
 
 ;; 2.4 Font Settings
+;; 2.4 Font Settings
 (set-face-attribute 'default nil
                     :family "Monaspace Neon NF"
                     :height 110)
+
+(set-face-attribute 'line-number nil
+                    :inherit 'default)
+
+(set-face-attribute 'line-number-current-line nil
+                    :inherit 'default)
+
 (set-fontset-font t 'unicode "Noto Sans" nil 'preprend)
 (set-fontset-font t 'emoji "Noto Color Emoji" nil 'preprend)
 (set-fontset-font t 'han "Noto Sans CJK SC" nil 'preprend)
@@ -150,6 +160,9 @@
 (add-hook 'glsl-mode-hook (lambda () (clang-format-save-hook-for-this-buffer)))
 
 (add-to-list 'auto-mode-alist '("\\.clang-format\\'" . yaml-mode))
+
+;; 3.5 Enable transient mark mode
+(transient-mark-mode 1)
 
 
 ;; ========================================
@@ -333,6 +346,13 @@ compilation-error-regexp-alist-alist
 ;; Create a buffer-local hook to run elixir-format on save, only when we enable elixir-mode.
 (add-hook 'elixir-mode-hook
           (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
+
+;;;;Org mode configuration
+;; Enable Org mode
+(require 'org)
+;; Make Org mode work with files ending in .org
+;; (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+;; The above is the default in recent emacsen
 
 ;; Common Lisp
 (rc/require 'slime)

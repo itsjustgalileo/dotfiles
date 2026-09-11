@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 ;;; fb-mode.el --- An Emacs major mode for the FreeBASIC programming language
 
 ;; Author:     Ralph Versteegen <rbversteegen@gmail.com>

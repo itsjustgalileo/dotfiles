@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (require 'package)
 
 ;; Add MELPA and other package archives

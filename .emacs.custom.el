@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -15,10 +16,7 @@
             move-text multiple-cursors nasm-mode nim-mode org-cliplink
             pdf-tools php-mode proof-general qml-mode racket-mode
             rainbow-mode rust-mode slime smex toml-mode treemacs
-            treemacs-all-the-icons tuareg typescript-mode yaml-mode))
- '(package-vc-selected-packages
-   '((doxymacs :url "https://github.com/pniedzielski/doxymacs.git"
-               :lisp-dir "lisp/"))))
+            treemacs-all-the-icons tuareg typescript-mode yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

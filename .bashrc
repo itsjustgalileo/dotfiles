@@ -1,7 +1,43 @@
-case $- in
-  *i*) ;;
-  *) return ;;
-esac
+# If not running interactively, don't do anything
+[[ $- == *i* ]] || return
+
+# Color definitions (taken from Color Bash Prompt HowTo).
+# Some colors might look different of some terminals.
+
+# Normal Colors
+black='\e[30m'        # Black
+red='\e[31m'          # Red
+green='\e[32m'        # Green
+yellow='\e[33m'       # Yellow
+blue='\e[34m'         # Blue
+magenta='\e[35m'      # Magenta
+cyan='\e[36m'         # Cyan
+white='\e[37m'        # White
+
+# Bold
+BLACK='\e[1;30m'       # Black
+RED='\e[1;31m'         # Red
+GREEN='\e[1;32m'       # Green
+YELLOW='\e[1;33m'      # Yellow
+BLUE='\e[1;34m'        # Blue
+MAGENTA='\e[1;35m'     # Magenta
+CYAN='\e[1;36m'        # Cyan
+WHITE='\e[1;37m'       # White
+
+# Background
+Black='\e[40m'       # Black
+Red='\e[41m'         # Red
+Green='\e[42m'       # Green
+Yellow='\e[43m'      # Yellow
+Blue='\e[44m'        # Blue
+Magenta='\e[45m'     # Magenta
+Cyan='\e[46m'        # Cyan
+White='\e[47m'       # White
+
+NC="\e[m"               # Color Reset
+
+
+ALERT=${WHITE}${Red} # Bold White on red background
 
 # Default editor
 export EDITOR='vim'
@@ -18,6 +54,17 @@ export LS_COLORS='di=34:fi=0:ln=36:pi=33:so=35:bd=44:cd=43:or=31:mi=05;37:ex=32:
 # GTK theme
 export GTK_THEME=Arc-Dark
 
+# Start X if no DISPLAY and at tty1 (use sh-compatible condition)
+if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+  exec startx 2>> "$HOME/.startx_errors.log"
+fi
+
+# PS1 Prompt
+PS1="[\u@$BLUE\h$NC]:\w\$ "
+
+# Manage Rust
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+
 # GHCup
 [ -f "/home/$USER/.ghcup/env" ] && . "/home/$USER/.ghcup/env" # ghcup-env
 
@@ -25,13 +72,3 @@ export GTK_THEME=Arc-Dark
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# Start X if no DISPLAY and at tty1 (use sh-compatible condition)
-if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
-  exec startx 2>> "$HOME/.startx_errors.log"
-fi
-
-# PS1 Prompt (simpler sh prompt, no colors)
-PS1='\u@\h:\w\$'
-[ -f "$HOME/.deno/env" ] && . "$HOME/.deno/env"
-[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"

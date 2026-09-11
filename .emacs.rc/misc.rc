@@ -1,3 +1,5 @@
+;; -*- lexical-binding: t; -*-
+
 (require 'ansi-color)
 
 (global-set-key (kbd "C-c p") 'find-file-at-point)

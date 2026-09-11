@@ -1,25 +1,29 @@
 #!/bin/sh
 
+# Make X11 environment available to systemd/D-Bus services
+systemctl --user import-environment DISPLAY XAUTHORITY
+dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
+
 # Start PulseAudio (if installed and used)
 if command -v pulseaudio > /dev/null; then
     pulseaudio --start
 fi
 
-# Set wallpaper using xwallpaper (if the image exists)
+# Set wallpaper
 if command -v feh > /dev/null; then
-    if [ -f ~/code/dotfiles/bg.webp ]; then
-        feh --bg-scale ~/code/dotfiles/bg.webp
+    if [ -f ~/code/dotfiles/bg.png ]; then
+        feh --bg-scale ~/code/dotfiles/bg.png
     fi
 fi
 
-# Merge Xresources (if .Xresources file exists)
+# Merge Xresources
 if [ -f ~/.Xresources ]; then
     xrdb -merge ~/.Xresources
 fi
 
 # Start clipmenu
 if command -v clipmenud > /dev/null; then
-    clipmenud&
+    clipmenud &
 fi
 
 # Start picom
@@ -27,5 +31,4 @@ if command -v picom > /dev/null; then
     picom -b &
 fi
 
-# Start the i3 window manager
 exec i3

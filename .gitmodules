@@ -1,3 +1,0 @@
-[submodule ".emacs.local/doxymacs"]
-	path = .emacs.local/doxymacs
-	url = https://github.com/pniedzielski/doxymacs

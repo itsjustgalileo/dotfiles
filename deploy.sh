@@ -16,7 +16,7 @@ for item in "$SCRIPT_DIR"/* "$SCRIPT_DIR"/.*; do
     fi
 
     # Skip deploy README and image
-    if [ "$(basename "$item")" = "deploy.sh" ] || [ "$(basename "$item")" = "dotfiles.jpeg" ] || [ "$(basename "$item")" = "README.md" ] || [ "$(basename "$item")" = "bg.webp" ]; then
+    if [ "$(basename "$item")" = "deploy.sh" ] || [ "$(basename "$item")" = "README.md" ] || [ "$(basename "$item")" = "Space.png" ] || [ "$(basename "$item")" = "terminal-icon.aseprite"]; then
         continue
     fi
     

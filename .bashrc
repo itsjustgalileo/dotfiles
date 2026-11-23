@@ -47,6 +47,10 @@ alias l='ls -l -a --color=always --group-directories-first'
 alias ll='ls -l -a --color=always --group-directories-first'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
+alias rmdir='rmdir --ignore-fail-on-non-empty'
+
+alias tmux="tmux new-session -A -s main -n DevEnv 'source $HOME/.devenv; exec bash'"
+alias neofetch="$HOME/utils/neofetch/neofetch"
 
 # Terminal protanopia colors (LS_COLORS should work if GNU ls is installed)
 export LS_COLORS='di=34:fi=0:ln=36:pi=33:so=35:bd=44:cd=43:or=31:mi=05;37:ex=32:*.tar=33:*.gz=33:*.tgz=33:*.zip=33:*.z=33:*.7z=33:*.rar=33:*.jar=33:*.tar.gz=33:*.tgz=33:*.xz=33:*.bz2=33:*.lz=33:*.lzma=33:*.pdf=33:*.ppt=33:*.doc=33:*.docx=33:*.odt=33:*.ods=33:*.svg=33'
@@ -59,9 +63,23 @@ if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
   exec startx 2>> "$HOME/.startx_errors.log"
 fi
 
-# PS1 Prompt
-PS1="[\u@$BLUE\h$NC]:\w\$ "
+if test -z "${XDG_RUNTIME_DIR}"; then
+  export XDG_RUNTIME_DIR=/tmp/xdg/"${UID}"-xdg-runtime-dir
+    if ! test -d "${XDG_RUNTIME_DIR}"; then
+      mkdir -p "${XDG_RUNTIME_DIR}"
+      chmod 0700 "${XDG_RUNTIME_DIR}"
+    fi
+fi
 
+# Making sure urxvt doesn't start in the middle of the terminal
+if [[ `ps ho command $(ps ho ppid $$)` == 'urxvt' ]]; then
+  clear
+fi
+
+# PS1 Prompt
+PS1="[\u@\[$BLUE\]\h\[$NC\]]:\w\$ "
+
+## THESE HAVE GOT TO GO
 # Manage Rust
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 

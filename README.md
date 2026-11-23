@@ -2,10 +2,6 @@
 
 ---
 
-![dotfiles logo](./dotfiles.jpeg)
-
----
-
 ## 🗨️ PRESENTATION
 
 This sets up my dev environment easily on any machine.
@@ -16,17 +12,9 @@ This setup might not work for everyone. This is very personal to me.
 
 ---
 
-## 🖥️ SUPPORTED PLATFORMS
-
-- [ ] Windows
-- [X] Linux
-- [X] macOS
-
----
-
 ## ✅ PREREQUISITES
 
-- [X] Linux (I uSe ArCh By ThE wAy) / macOS
+- [X] Linux (I uSe ArCh By ThE wAy)
 - [X] i3
 - [X] bash
 - [X] git
@@ -34,6 +22,14 @@ This setup might not work for everyone. This is very personal to me.
 - [X] vim
 - [X] ghcup
 - [X] rustup
+
+---
+
+## 🖥️ SUPPORTED PLATFORMS
+
+- [ ] Windows
+- [X] Linux
+- [ ] macOS
 
 ---
 
@@ -52,10 +48,11 @@ chmod +x ./deploy.sh
 
 ## 📋 TODO
 
+- [ ] Complete `notgit` command
 - [ ] Fix GTK theme settings
 - [ ] Port to windows
   - [ ] deploy script
-- [X] Port to mac
+- [ ] Port to mac
 
 ---
 
@@ -66,3 +63,4 @@ chmod +x ./deploy.sh
 - [Emacs wiki](https://www.emacswiki.org/)
 - [.bashrc setup](https://tldp.org/LDP/abs/html/sample-bashrc.html)
 - [Background by upklyak on Magnific](https://www.magnific.com/free-vector/pixel-space-background-set_418658571.htm#fromView=keyword&page=1&position=5&uuid=05accd1e-c466-4d5d-98d4-dec46997c62d&track=ais_hybrid&query=Pixel+game+background?log-in=google)
+- [Shell color output](https://stackoverflow.com/questions/5947742/how-to-change-the-output-color-of-echo-in-linux)

@@ -1,0 +1,23 @@
+#! /usr/bin/sh
+
+## PATH SETUP
+PATH="$HOME/code/tools/R-4.6.1/bin/:$HOME/code/tools/SmallerC:$HOME/code/tools/ffmpeg:$HOME/utils/aseprite/build/bin:$HOME/code/tools/Nim/bin:$PATH"
+export PATH
+
+CC=clang
+export CC
+
+CXX=clang++
+export CXX
+
+## Custom C includes
+C_INCLUDE_PATH="$HOME/code/external/ffmpeg/fftools:$HOME/code/thirdparty:$HOME/code/external:$C_INCLUDE_PATH"
+export C_INCLUDE_PATH
+
+## Custom C libraries
+LD_LIBRARY_PATH="$HOME/code/thirdparty:$HOME/code/external:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH
+
+alias cc='cc -Wall -Wextra -Werror -pedantic -std=c99 -g -ggdb'
+alias gcc='gcc -Wall -Wextra -Werror -pedantic -std=c99 -g -ggdb'
+alias clang='clang -Wall -Wextra -Werror -pedantic -std=c99 -g -ggdb'

@@ -1,3 +1,13 @@
-:set prompt "λ> "
-:set -XOverloadedStrings
 :set editor vim
+
+:set prompt "\ESC[1;35m\x03BB> \ESC[m"
+:set prompt-cont "\ESC[1;35m > \ESC[m"
+
+:seti -XGADTSyntax
+:seti -XGeneralizedNewtypeDeriving
+:seti -XInstanceSigs
+:seti -XLambdaCase
+:seti -XPartialTypeSignatures
+:seti -XScopedTypeVariables
+:seti -XTypeApplications
+:seti -XOverloadedStrings

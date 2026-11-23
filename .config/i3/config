@@ -122,12 +122,12 @@ set $ws1 "1: Web"
 set $ws2 "2: Root"
 set $ws3 "3: DevEnv"
 set $ws4 "4: Server"
-set $ws5 "5: "
-set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8: "
-set $ws9 "9: "
-set $ws10 "10: "
+set $ws5 "5: Stream"
+set $ws6 "6: Finances"
+set $ws7 "7: Study"
+set $ws8 "8: Misc."
+set $ws9 "9: Entertainement"
+set $ws10 "10: kiwix"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1

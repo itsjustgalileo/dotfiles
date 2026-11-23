@@ -67,6 +67,7 @@
 (scroll-bar-mode 0)             ;; Disable scroll bar
 (column-number-mode 1)          ;; Display column number in mode line
 (show-paren-mode 1)             ;; Highlight matching parentheses
+(add-hook 'compilation-filter-hook 'ansi-color-compilation-filter) ;; compile command colored ANSI output
 
 ;; 2.2 Line Numbers and Highlighting
 (global-display-line-numbers-mode) ;; Enable line numbers
@@ -262,7 +263,7 @@ compilation-error-regexp-alist-alist
 ;;; 5.2 Haskell mode
 (rc/require 'haskell-mode)
 
-(setq haskell-process-type 'cabal-new-repl)
+(setq haskell-process-type 'cabal-repl)
 (setq haskell-process-log t)
 
 (add-hook 'haskell-mode-hook 'haskell-indent-mode)
@@ -277,13 +278,17 @@ compilation-error-regexp-alist-alist
 
 (rc/require 'pdf-tools)
 (pdf-tools-install)
-(setq TeX-PDF-mode t) ;; Compile directement en PDF
-(setq TeX-auto-save t) ;; Sauvegarde automatique
-(setq TeX-parse-self t) ;; Analyse automatique
-(setq-default TeX-master nil) ;; Demande le master pour les documents multi-fichiers
+(setq TeX-PDF-mode t) ;; Compile to PDF
+(setq TeX-auto-save t) ;; Auto-save
+(setq TeX-parse-self t) ;; Auto-parse
+(setq-default TeX-master nil) ;; Multi-file master
 (setq TeX-source-correlate-method 'synctex)
-(setq TeX-view-program-selection
-  '((output-pdf "Okular")))
+(with-eval-after-load 'tex
+  (add-to-list 'TeX-view-program-list
+               '("MuPDF" ("mupdf " "%o")))
+
+  (setq TeX-view-program-selection
+        '((output-pdf "MuPDF"))))
 
 ;;; 5.4 eldoc mode
 (defun rc/turn-on-eldoc-mode ()
@@ -328,6 +333,9 @@ compilation-error-regexp-alist-alist
 
 ;; Personal modes
 
+;; Pascal mode
+(add-to-list 'auto-mode-alist '("\\.pas\\'" . pascal-mode))
+
 ;; FreeBasic mode
 (require 'fb-mode) ;; https://github.com/rversteegen/fb-mode
 (autoload 'basic-generic-mode "basic-mode" "Major mode for editing BASIC code." t)
@@ -336,9 +344,6 @@ compilation-error-regexp-alist-alist
 ;; Ada mode
 (require 'ada-simple-mode)
 (add-to-list 'auto-mode-alist '("\\.ad[abs]\\'" . ada-simple-mode))
-
-;; Doxygen
-(require 'gendoxy)
 
 ;; Elixir
 ;; Highlights *.elixir2 as well

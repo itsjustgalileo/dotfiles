@@ -49,11 +49,3 @@ URxvt.iconFile: .galileo/icons/terminal-icon.png
 ! White (light gray)
 *.color7:           #c9d1d9   ! White
 *.color15:          #f0f6fc   ! Bright White
-
-URxvt.perl-ext-common:  resize-font,matcher
-URxvt.url-launcher: /usr/bin/xdg-open
-URxvt.matcher.button: 1
-
-URxvt.keysym.C-minus:  resize-font:smaller
-URxvt.keysym.C-equal:  resize-font:bigger
-URxvt.keysym.C-0:      resize-font:reset
